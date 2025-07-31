@@ -1,9 +1,22 @@
 import UIKit
 
-final class RoutineCategorySelectorView: UIStackView {
-    private let types: [String] = ["Cat", "Dog", "Bird", "Others"]
-    private var selectedType: String = "Cat"
-    var onSelectionChanged: ((String) -> Void)?
+final class PetTypeSelectorView: UIStackView {
+    
+    // Dışarıdan gelen seçim bildirimi
+    var onSelectionChanged: ((PetType) -> Void)?
+
+    // Dışarıdan SwiftData ya da formdan gelen tür buraya atanır
+    var preselectedType: PetType? {
+        didSet {
+            if let type = preselectedType {
+                selectedType = type
+                updateButtonSelection()
+            }
+        }
+    }
+
+    private let types: [PetType] = PetType.allCases
+    private var selectedType: PetType = .cat // Varsayılan, ama didSet ile override ediliyor
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -16,28 +29,44 @@ final class RoutineCategorySelectorView: UIStackView {
 
     private func setupButtons() {
         axis = .horizontal
-        spacing = 10
+        spacing = 12
         distribution = .fillEqually
 
-        types.forEach { type in
+        for (index, type) in types.enumerated() {
             let button = UIButton(type: .system)
-            button.setTitle(type, for: .normal)
+            button.setTitle(type.displayName, for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
             button.setTitleColor(.white, for: .normal)
-            button.backgroundColor = type == selectedType ? UIColor.systemPurple : UIColor.systemBlue.withAlphaComponent(0.2)
-            button.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
-            button.layer.cornerRadius = 10
-            button.tag = types.firstIndex(of: type) ?? 0
-            button.addTarget(self, action: #selector(didTap(_:)), for: .touchUpInside)
+            button.backgroundColor = (type == selectedType) ? .systemPurple : .systemGray5
+            button.layer.cornerRadius = 12
+            button.tag = index
+            button.addTarget(self, action: #selector(handleTap(_:)), for: .touchUpInside)
             addArrangedSubview(button)
         }
     }
 
-    @objc private func didTap(_ sender: UIButton) {
-        selectedType = types[sender.tag]
-        for case let button as UIButton in arrangedSubviews {
-            let isSelected = button.tag == sender.tag
-            button.backgroundColor = isSelected ? UIColor.systemPurple : UIColor.systemBlue.withAlphaComponent(0.2)
+    private func updateButtonSelection() {
+        for (i, view) in arrangedSubviews.enumerated() {
+            guard let btn = view as? UIButton else { continue }
+            let btnType = types[i]
+            btn.backgroundColor = (btnType == selectedType) ? .systemPurple : .systemGray5
+            btn.setTitleColor((btnType == selectedType) ? .white : .systemPurple, for: .normal)
         }
+    }
+
+    @objc private func handleTap(_ sender: UIButton) {
+        selectedType = types[sender.tag]
+        updateButtonSelection()
         onSelectionChanged?(selectedType)
+    }
+
+    // Dışarıdan değer ayarlamak için kullanılabilir (ViewController'dan çağrılır)
+    func setInitialType(from type: PetType) {
+        selectedType = type
+        updateButtonSelection()
+    }
+
+    func getSelectedType() -> PetType {
+        return selectedType
     }
 }

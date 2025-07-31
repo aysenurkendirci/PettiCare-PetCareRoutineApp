@@ -1,57 +1,50 @@
 import UIKit
 
-final class RoutineCardView: UIView {
+final class RoutineListView: UIStackView {
 
-    private let iconView: UIImageView = {
-        let iv = UIImageView()
-        iv.tintColor = .systemPurple
-        iv.contentMode = .scaleAspectFit
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        return iv
-    }()
+    var onFrequencyTappedAtIndex: ((Int, String) -> Void)?
 
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = .boldSystemFont(ofSize: 16)
-        return label
-    }()
+    private var currentRoutines: [(title: String, subtitle: String)] = []
 
-    init(title: String, icon: UIImage) {
-        super.init(frame: .zero)
-        setupView(title: title, icon: icon)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureStackView()
     }
 
-    required init?(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupView(title: String, icon: UIImage) {
-        backgroundColor = .white
-        layer.cornerRadius = 12
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.1
-        layer.shadowOffset = CGSize(width: 0, height: 1)
-        layer.shadowRadius = 4
+    private func configureStackView() {
+        axis = .vertical
+        spacing = 12
+        distribution = .fill
+        alignment = .fill
+        translatesAutoresizingMaskIntoConstraints = false
+    }
 
-        iconView.image = icon
+    func update(with routines: [(title: String, subtitle: String)]) {
+        currentRoutines = routines
+        arrangedSubviews.forEach { $0.removeFromSuperview() }
 
-        let hStack = UIStackView(arrangedSubviews: [iconView, titleLabel])
-        hStack.axis = .horizontal
-        hStack.spacing = 12
-        hStack.alignment = .center
+        for (index, item) in routines.enumerated() {
+            let icon = UIImage(systemName: "pawprint") ?? UIImage()
+            let view = RoutineItemView(title: item.title, subtitle: item.subtitle, icon: icon)
 
-        addSubview(hStack)
-        hStack.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = title
+            // 🎯 Kullanıcı sıklığa tıkladığında:
+            view.onFrequencyTap = { [weak self] in
+                self?.onFrequencyTappedAtIndex?(index, item.title)
+            }
 
-        NSLayoutConstraint.activate([
-            iconView.widthAnchor.constraint(equalToConstant: 24),
-            iconView.heightAnchor.constraint(equalToConstant: 24),
-            hStack.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            hStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
-            hStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            hStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
-        ])
+            addArrangedSubview(view)
+        }
+    }
+
+    func updateFrequency(at index: Int, to newFrequency: String) {
+        guard index < arrangedSubviews.count else { return }
+        currentRoutines[index].subtitle = newFrequency
+        if let itemView = arrangedSubviews[index] as? RoutineItemView {
+            itemView.updateSubtitle(newFrequency)
+        }
     }
 }

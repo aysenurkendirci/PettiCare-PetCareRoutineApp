@@ -1,6 +1,6 @@
 import UIKit
 
-/* final class PetCalendarView: UIView {
+final class PetCalendarView: UIView {
 
     // 📅 30 günlük tarih listesi (bugünden başlayarak)
     private(set) var dates: [Date] = []

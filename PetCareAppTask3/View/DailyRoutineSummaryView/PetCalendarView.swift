@@ -1,57 +1,55 @@
 import UIKit
 
-final class RoutineCalendarView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+final class CalendarDayCell: UICollectionViewCell {
 
-    var selectedDate = Date()
-    var onDateSelected: ((Date) -> Void)?
+    private let label: UILabel = {
+        let lbl = UILabel()
+        lbl.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        lbl.textAlignment = .center
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        return lbl
+    }()
 
-    private var calendarDays: [Date] = []
+    override var isSelected: Bool {
+        didSet {
+            updateSelectionStyle()
+        }
+    }
 
-    init() {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 8
-        super.init(frame: .zero, collectionViewLayout: layout)
-        delegate = self
-        dataSource = self
-        backgroundColor = .clear
-        register(CalendarDayCell.self, forCellWithReuseIdentifier: "dayCell")
-        generateDays()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func generateDays() {
-        let calendar = Calendar.current
-        let start = calendar.date(from: Calendar.current.dateComponents([.year, .month], from: Date()))!
-        calendarDays = (0..<30).compactMap { calendar.date(byAdding: .day, value: $0, to: start) }
-        reloadData()
+    func configure(with date: Date, selected: Bool) {
+        let day = Calendar.current.component(.day, from: date)
+        label.text = "\(day)"
+        isSelected = selected
     }
 
-    // MARK: - UICollectionView
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return calendarDays.count
+    private func setupUI() {
+        contentView.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            label.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            label.heightAnchor.constraint(equalTo: contentView.heightAnchor)
+        ])
+        contentView.layer.cornerRadius = contentView.bounds.width / 2
+        contentView.layer.masksToBounds = true
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let date = calendarDays[indexPath.item]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dayCell", for: indexPath) as! CalendarDayCell
-        let isSelected = Calendar.current.isDate(date, inSameDayAs: selectedDate)
-        cell.configure(with: <#Date#>, date: date, selected: isSelected)
-        return cell
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.layer.cornerRadius = contentView.frame.width / 2
     }
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedDate = calendarDays[indexPath.item]
-        onDateSelected?(selectedDate)
-        reloadData()
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.frame.width - 6 * 8) / 7
-        return CGSize(width: width, height: width)
+    private func updateSelectionStyle() {
+        contentView.backgroundColor = isSelected ? .systemPurple : .clear
+        label.textColor = isSelected ? .white : .black
     }
 }

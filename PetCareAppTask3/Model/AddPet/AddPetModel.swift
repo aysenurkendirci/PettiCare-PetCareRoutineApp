@@ -1,20 +1,26 @@
-//
-//  AddPetModel.swift
-//  PetCareAppTask3
-//
-//  Created by Ayşe Nur Kendirci on 25.07.2025.
-//
-
 import Foundation
+import SwiftData
 
-/// Evcil hayvan bilgilerini temsil eden veri modeli (Model katmanı)
-struct Pet {
-    var name: String         // Evcil hayvanın adı
-    var type: String         // Türü (Kedi, Köpek, Balık, Kuş vb.)
-    var breed: String        // Cinsi
-    var birthDate: String    // Doğum tarihi
-    var weight: String       // Ağırlığı (kg)
-    var height: String       // Boyu (cm)
-    var color: String        // Rengi
-    var details: String      // Ekstra açıklamalar, notlar vs.
+@Model
+class Pet {
+    var name: String
+    var type: String
+    var breed: String
+    var birthDate: Date
+    var weight: String
+    var height: String
+    var color: String
+    var details: String
+
+    init(name: String, type: String, breed: String, birthDate: Date,
+         weight: String, height: String, color: String, details: String) {
+        self.name = name
+        self.type = type
+        self.breed = breed
+        self.birthDate = birthDate
+        self.weight = weight
+        self.height = height
+        self.color = color
+        self.details = details
+    }
 }

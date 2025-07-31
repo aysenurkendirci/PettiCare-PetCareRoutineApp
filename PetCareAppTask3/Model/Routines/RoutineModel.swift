@@ -17,6 +17,25 @@ enum PetType: String, CaseIterable {
     case dog = "Dog"
     case bird = "Bird"
     case fish = "Fish"
+
+    var displayName: String {
+        switch self {
+        case .cat: return "Kedi"
+        case .dog: return "Köpek"
+        case .bird: return "Kuş"
+        case .fish: return "Balık"
+        }
+    }
+
+    init?(displayName: String) {
+        switch displayName {
+        case "Kedi": self = .cat
+        case "Köpek": self = .dog
+        case "Kuş": self = .bird
+        case "Balık": self = .fish
+        default: return nil
+        }
+    }
 }
 
 //PetType.allCases // [cat, dog, bird, others]

@@ -7,23 +7,85 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE3B75B42E36E773001EE1B0 /* PetBirthDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75B32E36E773001EE1B0 /* PetBirthDatePickerView.swift */; };
+		BE3B75B82E36E7A3001EE1B0 /* PetSizeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75B72E36E7A3001EE1B0 /* PetSizeInputView.swift */; };
+		BE3B75BA2E36E7B6001EE1B0 /* PetFeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75B92E36E7B6001EE1B0 /* PetFeaturesView.swift */; };
+		BE3B75BC2E36E95F001EE1B0 /* PetBreedPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75BB2E36E95F001EE1B0 /* PetBreedPickerView.swift */; };
+		BE3B75BF2E36EC50001EE1B0 /* PetTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75BE2E36EC50001EE1B0 /* PetTypeViewController.swift */; };
+		BE3B75C52E36F139001EE1B0 /* PetColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75C42E36F139001EE1B0 /* PetColorViewController.swift */; };
+		BE3B75C92E36F26F001EE1B0 /* PetInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75C82E36F26F001EE1B0 /* PetInfoViewController.swift */; };
+		BE3B75CB2E36F51C001EE1B0 /* PetInfoInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75CA2E36F51C001EE1B0 /* PetInfoInputView.swift */; };
+		BE3B75CD2E37506F001EE1B0 /* PetBirthDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75CC2E37506F001EE1B0 /* PetBirthDateViewController.swift */; };
+		BE3B75CF2E37511A001EE1B0 /* PetFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75CE2E37511A001EE1B0 /* PetFeaturesViewController.swift */; };
+		BE3B75D32E37550E001EE1B0 /* PetSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75D22E37550E001EE1B0 /* PetSizeViewController.swift */; };
+		BE3B75D52E3761FD001EE1B0 /* PetBreedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75D42E3761FD001EE1B0 /* PetBreedViewController.swift */; };
+		BE3B75D72E376780001EE1B0 /* AddPetFullFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75D62E376780001EE1B0 /* AddPetFullFormViewController.swift */; };
+		BE3B75DA2E37B5FF001EE1B0 /* PetNameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3B75D92E37B5FF001EE1B0 /* PetNameInputView.swift */; };
+		BE45246E2E36DD7700649D28 /* sembol.png in Resources */ = {isa = PBXBuildFile; fileRef = BE45246D2E36DD7700649D28 /* sembol.png */; };
+		BE5326992E38E61D004D6EDD /* RoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5326982E38E61D004D6EDD /* RoutineModel.swift */; };
+		BE53269B2E38E67A004D6EDD /* RoutineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE53269A2E38E67A004D6EDD /* RoutineViewModel.swift */; };
+		BE53269E2E38EA91004D6EDD /* PetColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE53269D2E38EA91004D6EDD /* PetColorPickerView.swift */; };
+		BE5326A02E38EBDB004D6EDD /* PetTypeSelectorView .swift in Sources */ = {isa = PBXBuildFile; fileRef = BE53269F2E38EBDB004D6EDD /* PetTypeSelectorView .swift */; };
+		BE5326A22E38EBF1004D6EDD /* RoutineListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5326A12E38EBF1004D6EDD /* RoutineListView.swift */; };
+		BE5326A72E38EF2A004D6EDD /* PetCalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5326A62E38EF2A004D6EDD /* PetCalenderView.swift */; };
+		BE5326A92E38F010004D6EDD /* PetRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5326A82E38F00F004D6EDD /* PetRoutineViewController.swift */; };
+		BE5326AD2E3903B9004D6EDD /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5326AC2E3903B9004D6EDD /* CalendarDayCell.swift */; };
+		BE5326AF2E3905EB004D6EDD /* DailyRoutineSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5326AE2E3905EB004D6EDD /* DailyRoutineSummaryView.swift */; };
 		BE533D042E32CE9C00EEABD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE533D032E32CE9C00EEABD1 /* AppDelegate.swift */; };
 		BE533D062E32CE9C00EEABD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE533D052E32CE9C00EEABD1 /* SceneDelegate.swift */; };
-		BE533D082E32CE9C00EEABD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE533D072E32CE9C00EEABD1 /* ViewController.swift */; };
 		BE533D0B2E32CE9C00EEABD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE533D092E32CE9C00EEABD1 /* Main.storyboard */; };
 		BE533D0D2E32CE9F00EEABD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE533D0C2E32CE9F00EEABD1 /* Assets.xcassets */; };
 		BE533D102E32CE9F00EEABD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE533D0E2E32CE9F00EEABD1 /* LaunchScreen.storyboard */; };
+		BE533D222E33604700EEABD1 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE533D212E33604700EEABD1 /* SplashViewController.swift */; };
+		BE533D2D2E336CEE00EEABD1 /* AddPetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE533D2C2E336CEE00EEABD1 /* AddPetModel.swift */; };
+		BE533D2F2E336D0400EEABD1 /* AddPetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE533D2E2E336D0400EEABD1 /* AddPetViewModel.swift */; };
+		BE533D312E336D3500EEABD1 /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE533D302E336D3500EEABD1 /* AddPetViewController.swift */; };
+		BE78A5342E36603F0025C736 /* PetTypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78A5332E36603F0025C736 /* PetTypePickerView.swift */; };
+		BECFFD292E39F38600A3ED68 /* RoutineItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECFFD282E39F38600A3ED68 /* RoutineItemView.swift */; };
+		BECFFD2B2E3A349000A3ED68 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECFFD2A2E3A349000A3ED68 /* MainTabBarController.swift */; };
+		BECFFD2D2E3A364200A3ED68 /* UIColor+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECFFD2C2E3A364200A3ED68 /* UIColor+Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE3B75B32E36E773001EE1B0 /* PetBirthDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBirthDatePickerView.swift; sourceTree = "<group>"; };
+		BE3B75B72E36E7A3001EE1B0 /* PetSizeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetSizeInputView.swift; sourceTree = "<group>"; };
+		BE3B75B92E36E7B6001EE1B0 /* PetFeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFeaturesView.swift; sourceTree = "<group>"; };
+		BE3B75BB2E36E95F001EE1B0 /* PetBreedPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBreedPickerView.swift; sourceTree = "<group>"; };
+		BE3B75BE2E36EC50001EE1B0 /* PetTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTypeViewController.swift; sourceTree = "<group>"; };
+		BE3B75C42E36F139001EE1B0 /* PetColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetColorViewController.swift; sourceTree = "<group>"; };
+		BE3B75C82E36F26F001EE1B0 /* PetInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoViewController.swift; sourceTree = "<group>"; };
+		BE3B75CA2E36F51C001EE1B0 /* PetInfoInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoInputView.swift; sourceTree = "<group>"; };
+		BE3B75CC2E37506F001EE1B0 /* PetBirthDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBirthDateViewController.swift; sourceTree = "<group>"; };
+		BE3B75CE2E37511A001EE1B0 /* PetFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFeaturesViewController.swift; sourceTree = "<group>"; };
+		BE3B75D22E37550E001EE1B0 /* PetSizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetSizeViewController.swift; sourceTree = "<group>"; };
+		BE3B75D42E3761FD001EE1B0 /* PetBreedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBreedViewController.swift; sourceTree = "<group>"; };
+		BE3B75D62E376780001EE1B0 /* AddPetFullFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetFullFormViewController.swift; sourceTree = "<group>"; };
+		BE3B75D92E37B5FF001EE1B0 /* PetNameInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetNameInputView.swift; sourceTree = "<group>"; };
+		BE45246D2E36DD7700649D28 /* sembol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sembol.png; sourceTree = "<group>"; };
+		BE5326982E38E61D004D6EDD /* RoutineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineModel.swift; sourceTree = "<group>"; };
+		BE53269A2E38E67A004D6EDD /* RoutineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewModel.swift; sourceTree = "<group>"; };
+		BE53269D2E38EA91004D6EDD /* PetColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetColorPickerView.swift; sourceTree = "<group>"; };
+		BE53269F2E38EBDB004D6EDD /* PetTypeSelectorView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetTypeSelectorView .swift"; sourceTree = "<group>"; };
+		BE5326A12E38EBF1004D6EDD /* RoutineListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineListView.swift; sourceTree = "<group>"; };
+		BE5326A62E38EF2A004D6EDD /* PetCalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCalenderView.swift; sourceTree = "<group>"; };
+		BE5326A82E38F00F004D6EDD /* PetRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRoutineViewController.swift; sourceTree = "<group>"; };
+		BE5326AC2E3903B9004D6EDD /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
+		BE5326AE2E3905EB004D6EDD /* DailyRoutineSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineSummaryView.swift; sourceTree = "<group>"; };
 		BE533D002E32CE9C00EEABD1 /* PetCareAppTask3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetCareAppTask3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE533D032E32CE9C00EEABD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE533D052E32CE9C00EEABD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BE533D072E32CE9C00EEABD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BE533D0A2E32CE9C00EEABD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE533D0C2E32CE9F00EEABD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE533D0F2E32CE9F00EEABD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE533D112E32CE9F00EEABD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE533D212E33604700EEABD1 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		BE533D2C2E336CEE00EEABD1 /* AddPetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetModel.swift; sourceTree = "<group>"; };
+		BE533D2E2E336D0400EEABD1 /* AddPetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetViewModel.swift; sourceTree = "<group>"; };
+		BE533D302E336D3500EEABD1 /* AddPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetViewController.swift; sourceTree = "<group>"; };
+		BE78A5332E36603F0025C736 /* PetTypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTypePickerView.swift; sourceTree = "<group>"; };
+		BECFFD282E39F38600A3ED68 /* RoutineItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineItemView.swift; sourceTree = "<group>"; };
+		BECFFD2A2E3A349000A3ED68 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		BECFFD2C2E3A364200A3ED68 /* UIColor+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Theme.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +99,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE3B75BD2E36EC2A001EE1B0 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				BE533D212E33604700EEABD1 /* SplashViewController.swift */,
+				BE3B75D62E376780001EE1B0 /* AddPetFullFormViewController.swift */,
+				BE5326A82E38F00F004D6EDD /* PetRoutineViewController.swift */,
+				BECFFD2A2E3A349000A3ED68 /* MainTabBarController.swift */,
+			);
+			name = Screens;
+			path = "boş";
+			sourceTree = "<group>";
+		};
+		BE3B75D82E37678B001EE1B0 /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				BE3B75CA2E36F51C001EE1B0 /* PetInfoInputView.swift */,
+				BE3B75BE2E36EC50001EE1B0 /* PetTypeViewController.swift */,
+				BE3B75C42E36F139001EE1B0 /* PetColorViewController.swift */,
+				BE3B75C82E36F26F001EE1B0 /* PetInfoViewController.swift */,
+				BE3B75D42E3761FD001EE1B0 /* PetBreedViewController.swift */,
+				BE533D302E336D3500EEABD1 /* AddPetViewController.swift */,
+				BE3B75CC2E37506F001EE1B0 /* PetBirthDateViewController.swift */,
+				BE3B75CE2E37511A001EE1B0 /* PetFeaturesViewController.swift */,
+				BE3B75D22E37550E001EE1B0 /* PetSizeViewController.swift */,
+				BE5326AE2E3905EB004D6EDD /* DailyRoutineSummaryView.swift */,
+			);
+			path = Deprecated;
+			sourceTree = "<group>";
+		};
+		BE5326972E38E56A004D6EDD /* Routines */ = {
+			isa = PBXGroup;
+			children = (
+				BE5326982E38E61D004D6EDD /* RoutineModel.swift */,
+			);
+			path = Routines;
+			sourceTree = "<group>";
+		};
+		BE5326A52E38EC07004D6EDD /* DailyRoutineSummaryView */ = {
+			isa = PBXGroup;
+			children = (
+				BE53269F2E38EBDB004D6EDD /* PetTypeSelectorView .swift */,
+				BE5326A12E38EBF1004D6EDD /* RoutineListView.swift */,
+				BECFFD282E39F38600A3ED68 /* RoutineItemView.swift */,
+				BE5326A62E38EF2A004D6EDD /* PetCalenderView.swift */,
+				BE5326AC2E3903B9004D6EDD /* CalendarDayCell.swift */,
+			);
+			path = DailyRoutineSummaryView;
+			sourceTree = "<group>";
+		};
+		BE5326B02E390989004D6EDD /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BE533D032E32CE9C00EEABD1 /* AppDelegate.swift */,
+				BE533D052E32CE9C00EEABD1 /* SceneDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		BE533CF72E32CE9C00EEABD1 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +176,77 @@
 		BE533D022E32CE9C00EEABD1 /* PetCareAppTask3 */ = {
 			isa = PBXGroup;
 			children = (
-				BE533D032E32CE9C00EEABD1 /* AppDelegate.swift */,
-				BE533D052E32CE9C00EEABD1 /* SceneDelegate.swift */,
-				BE533D072E32CE9C00EEABD1 /* ViewController.swift */,
+				BE3B75BD2E36EC2A001EE1B0 /* Screens */,
+				BE533D1D2E335D1900EEABD1 /* Model */,
+				BE533D1C2E335D0A00EEABD1 /* ViewModel */,
+				BE533D1B2E335D0300EEABD1 /* View */,
+				BE533D1E2E335D2C00EEABD1 /* Resources */,
+				BE5326B02E390989004D6EDD /* Core */,
 				BE533D092E32CE9C00EEABD1 /* Main.storyboard */,
-				BE533D0C2E32CE9F00EEABD1 /* Assets.xcassets */,
-				BE533D0E2E32CE9F00EEABD1 /* LaunchScreen.storyboard */,
 				BE533D112E32CE9F00EEABD1 /* Info.plist */,
 			);
 			path = PetCareAppTask3;
+			sourceTree = "<group>";
+		};
+		BE533D1B2E335D0300EEABD1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BE5326A52E38EC07004D6EDD /* DailyRoutineSummaryView */,
+				BE78A5322E365F4A0025C736 /* PetFormView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BE533D1C2E335D0A00EEABD1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BE533D2E2E336D0400EEABD1 /* AddPetViewModel.swift */,
+				BE53269A2E38E67A004D6EDD /* RoutineViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BE533D1D2E335D1900EEABD1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BE5326972E38E56A004D6EDD /* Routines */,
+				BE533D2B2E336C9800EEABD1 /* AddPet */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BE533D1E2E335D2C00EEABD1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BE533D0C2E32CE9F00EEABD1 /* Assets.xcassets */,
+				BE45246D2E36DD7700649D28 /* sembol.png */,
+				BE533D0E2E32CE9F00EEABD1 /* LaunchScreen.storyboard */,
+				BE3B75D82E37678B001EE1B0 /* Deprecated */,
+				BECFFD2C2E3A364200A3ED68 /* UIColor+Theme.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BE533D2B2E336C9800EEABD1 /* AddPet */ = {
+			isa = PBXGroup;
+			children = (
+				BE533D2C2E336CEE00EEABD1 /* AddPetModel.swift */,
+			);
+			path = AddPet;
+			sourceTree = "<group>";
+		};
+		BE78A5322E365F4A0025C736 /* PetFormView */ = {
+			isa = PBXGroup;
+			children = (
+				BE78A5332E36603F0025C736 /* PetTypePickerView.swift */,
+				BE3B75B32E36E773001EE1B0 /* PetBirthDatePickerView.swift */,
+				BE3B75B72E36E7A3001EE1B0 /* PetSizeInputView.swift */,
+				BE3B75B92E36E7B6001EE1B0 /* PetFeaturesView.swift */,
+				BE3B75BB2E36E95F001EE1B0 /* PetBreedPickerView.swift */,
+				BE3B75D92E37B5FF001EE1B0 /* PetNameInputView.swift */,
+				BE53269D2E38EA91004D6EDD /* PetColorPickerView.swift */,
+			);
+			path = PetFormView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +310,7 @@
 				BE533D102E32CE9F00EEABD1 /* LaunchScreen.storyboard in Resources */,
 				BE533D0D2E32CE9F00EEABD1 /* Assets.xcassets in Resources */,
 				BE533D0B2E32CE9C00EEABD1 /* Main.storyboard in Resources */,
+				BE45246E2E36DD7700649D28 /* sembol.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +321,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE533D082E32CE9C00EEABD1 /* ViewController.swift in Sources */,
+				BE5326A72E38EF2A004D6EDD /* PetCalenderView.swift in Sources */,
+				BECFFD292E39F38600A3ED68 /* RoutineItemView.swift in Sources */,
+				BE3B75D32E37550E001EE1B0 /* PetSizeViewController.swift in Sources */,
+				BE533D2F2E336D0400EEABD1 /* AddPetViewModel.swift in Sources */,
+				BE3B75C52E36F139001EE1B0 /* PetColorViewController.swift in Sources */,
+				BE3B75D52E3761FD001EE1B0 /* PetBreedViewController.swift in Sources */,
+				BE3B75BC2E36E95F001EE1B0 /* PetBreedPickerView.swift in Sources */,
 				BE533D042E32CE9C00EEABD1 /* AppDelegate.swift in Sources */,
+				BE3B75DA2E37B5FF001EE1B0 /* PetNameInputView.swift in Sources */,
+				BE533D312E336D3500EEABD1 /* AddPetViewController.swift in Sources */,
+				BECFFD2B2E3A349000A3ED68 /* MainTabBarController.swift in Sources */,
+				BE533D2D2E336CEE00EEABD1 /* AddPetModel.swift in Sources */,
+				BECFFD2D2E3A364200A3ED68 /* UIColor+Theme.swift in Sources */,
+				BE5326AD2E3903B9004D6EDD /* CalendarDayCell.swift in Sources */,
+				BE3B75C92E36F26F001EE1B0 /* PetInfoViewController.swift in Sources */,
+				BE5326AF2E3905EB004D6EDD /* DailyRoutineSummaryView.swift in Sources */,
+				BE3B75D72E376780001EE1B0 /* AddPetFullFormViewController.swift in Sources */,
+				BE3B75B82E36E7A3001EE1B0 /* PetSizeInputView.swift in Sources */,
+				BE3B75CD2E37506F001EE1B0 /* PetBirthDateViewController.swift in Sources */,
+				BE53269E2E38EA91004D6EDD /* PetColorPickerView.swift in Sources */,
+				BE5326A02E38EBDB004D6EDD /* PetTypeSelectorView .swift in Sources */,
+				BE3B75BA2E36E7B6001EE1B0 /* PetFeaturesView.swift in Sources */,
+				BE3B75CB2E36F51C001EE1B0 /* PetInfoInputView.swift in Sources */,
+				BE5326A22E38EBF1004D6EDD /* RoutineListView.swift in Sources */,
 				BE533D062E32CE9C00EEABD1 /* SceneDelegate.swift in Sources */,
+				BE5326A92E38F010004D6EDD /* PetRoutineViewController.swift in Sources */,
+				BE78A5342E36603F0025C736 /* PetTypePickerView.swift in Sources */,
+				BE3B75CF2E37511A001EE1B0 /* PetFeaturesViewController.swift in Sources */,
+				BE53269B2E38E67A004D6EDD /* RoutineViewModel.swift in Sources */,
+				BE3B75B42E36E773001EE1B0 /* PetBirthDatePickerView.swift in Sources */,
+				BE5326992E38E61D004D6EDD /* RoutineModel.swift in Sources */,
+				BE3B75BF2E36EC50001EE1B0 /* PetTypeViewController.swift in Sources */,
+				BE533D222E33604700EEABD1 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
