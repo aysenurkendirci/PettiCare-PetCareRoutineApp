@@ -16,12 +16,21 @@ class AddPetViewModel {
         details: ""
     )
 
-    func savePet(name: String, type: String, breed: String, birthDate: Date, weight: String, height: String, color: String, details: String) {
+    func savePet(
+        name: String,
+        type: PetType,  // <-- Artık String değil
+        breed: String,
+        birthDate: Date,
+        weight: String,
+        height: String,
+        color: String,
+        details: String
+    ) {
         guard let context = modelContext else { return }
 
         let newPet = Pet(
             name: name,
-            type: type,
+            type: type.rawValue, // <-- enum’dan gelen rawValue’yu kaydediyoruz
             breed: breed,
             birthDate: birthDate,
             weight: weight,
@@ -31,11 +40,11 @@ class AddPetViewModel {
         )
 
         context.insert(newPet)
-        print("🐶 Kaydedilen Pet: \(newPet.name)")
+        print("🐶 Kaydedilen Pet: \(newPet.name), tür: \(type.rawValue)")
     }
-    var selectedType: String {
-        return pet.type
+
+    var selectedType: PetType {
+        return PetType(rawValue: pet.type) ?? .cat
     }
 
 }
-

@@ -2,68 +2,55 @@ import UIKit
 
 final class PetTypeSelectorView: UIStackView {
     
-    // Dışarıdan gelen seçim bildirimi
-    var onSelectionChanged: ((PetType) -> Void)?
-
-    // Dışarıdan SwiftData ya da formdan gelen tür buraya atanır
+    // Artık seçim bildirimi gereksiz, kullanıcı seçim yapamaz
+   var onSelectionChanged: ((PetType) -> Void)?
+    
+    // Dışarıdan atanır — sadece bu tür gösterilecek
     var preselectedType: PetType? {
         didSet {
             if let type = preselectedType {
                 selectedType = type
-                updateButtonSelection()
+                setupButtons(for: [type]) // Sadece bu türü göster
             }
         }
     }
 
-    private let types: [PetType] = PetType.allCases
-    private var selectedType: PetType = .cat // Varsayılan, ama didSet ile override ediliyor
+    private var selectedType: PetType = .cat // Varsayılan
+    private let allTypes: [PetType] = PetType.allCases
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupButtons()
+        axis = .horizontal
+        spacing = 12
+        distribution = .fillEqually
     }
 
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupButtons() {
-        axis = .horizontal
-        spacing = 12
-        distribution = .fillEqually
+    // Sadece verilen türleri göster
+    private func setupButtons(for typesToShow: [PetType]) {
+        // Var olan tüm butonları temizle
+        arrangedSubviews.forEach { $0.removeFromSuperview() }
 
-        for (index, type) in types.enumerated() {
+        for (index, type) in typesToShow.enumerated() {
             let button = UIButton(type: .system)
             button.setTitle(type.displayName, for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
             button.setTitleColor(.white, for: .normal)
-            button.backgroundColor = (type == selectedType) ? .systemPurple : .systemGray5
+            button.backgroundColor = .systemPurple
             button.layer.cornerRadius = 12
             button.tag = index
-            button.addTarget(self, action: #selector(handleTap(_:)), for: .touchUpInside)
+            button.isUserInteractionEnabled = false // Tek tür gösterildiği için tıklanamaz
             addArrangedSubview(button)
         }
     }
 
-    private func updateButtonSelection() {
-        for (i, view) in arrangedSubviews.enumerated() {
-            guard let btn = view as? UIButton else { continue }
-            let btnType = types[i]
-            btn.backgroundColor = (btnType == selectedType) ? .systemPurple : .systemGray5
-            btn.setTitleColor((btnType == selectedType) ? .white : .systemPurple, for: .normal)
-        }
-    }
-
-    @objc private func handleTap(_ sender: UIButton) {
-        selectedType = types[sender.tag]
-        updateButtonSelection()
-        onSelectionChanged?(selectedType)
-    }
-
-    // Dışarıdan değer ayarlamak için kullanılabilir (ViewController'dan çağrılır)
+    // Dışarıdan çağrıldığında türü ayarlar
     func setInitialType(from type: PetType) {
         selectedType = type
-        updateButtonSelection()
+        setupButtons(for: [type])
     }
 
     func getSelectedType() -> PetType {

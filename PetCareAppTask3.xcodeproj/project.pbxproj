@@ -33,7 +33,6 @@
 		BE5326AF2E3905EB004D6EDD /* DailyRoutineSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5326AE2E3905EB004D6EDD /* DailyRoutineSummaryView.swift */; };
 		BE533D042E32CE9C00EEABD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE533D032E32CE9C00EEABD1 /* AppDelegate.swift */; };
 		BE533D062E32CE9C00EEABD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE533D052E32CE9C00EEABD1 /* SceneDelegate.swift */; };
-		BE533D0B2E32CE9C00EEABD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE533D092E32CE9C00EEABD1 /* Main.storyboard */; };
 		BE533D0D2E32CE9F00EEABD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE533D0C2E32CE9F00EEABD1 /* Assets.xcassets */; };
 		BE533D102E32CE9F00EEABD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE533D0E2E32CE9F00EEABD1 /* LaunchScreen.storyboard */; };
 		BE533D222E33604700EEABD1 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE533D212E33604700EEABD1 /* SplashViewController.swift */; };
@@ -74,7 +73,6 @@
 		BE533D002E32CE9C00EEABD1 /* PetCareAppTask3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetCareAppTask3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE533D032E32CE9C00EEABD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE533D052E32CE9C00EEABD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BE533D0A2E32CE9C00EEABD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE533D0C2E32CE9F00EEABD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE533D0F2E32CE9F00EEABD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE533D112E32CE9F00EEABD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 				BE533D1B2E335D0300EEABD1 /* View */,
 				BE533D1E2E335D2C00EEABD1 /* Resources */,
 				BE5326B02E390989004D6EDD /* Core */,
-				BE533D092E32CE9C00EEABD1 /* Main.storyboard */,
 				BE533D112E32CE9F00EEABD1 /* Info.plist */,
 			);
 			path = PetCareAppTask3;
@@ -309,7 +306,6 @@
 			files = (
 				BE533D102E32CE9F00EEABD1 /* LaunchScreen.storyboard in Resources */,
 				BE533D0D2E32CE9F00EEABD1 /* Assets.xcassets in Resources */,
-				BE533D0B2E32CE9C00EEABD1 /* Main.storyboard in Resources */,
 				BE45246E2E36DD7700649D28 /* sembol.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,14 +356,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BE533D092E32CE9C00EEABD1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BE533D0A2E32CE9C00EEABD1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BE533D0E2E32CE9F00EEABD1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -508,8 +496,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PetCareAppTask3/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -535,8 +523,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PetCareAppTask3/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

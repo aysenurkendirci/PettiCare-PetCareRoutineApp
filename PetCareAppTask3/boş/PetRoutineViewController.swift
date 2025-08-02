@@ -17,21 +17,22 @@ final class PetRoutineViewController: UIViewController {
         label.textColor = .label
         return label
     }()
-    // MARK: - View Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("🧩 gelen preselectedPetType:", preselectedPetType ?? "nil")
         setupUI()
         setupBindings()
         setupInitialState()
-        setupInitialState()
+        updateUI()
     }
 
-    // MARK: - UI Setup
     private func setupUI() {
         view.backgroundColor = UIColor.primaryBackground
 
         let stack = UIStackView(arrangedSubviews: [
             petTypeTitleLabel,
+            petTypeSelector,
             calendarView,
             routineListView
         ])
@@ -49,10 +50,8 @@ final class PetRoutineViewController: UIViewController {
         ])
     }
 
-    // MARK: - ViewModel Bindings
     private func setupBindings() {
         calendarView.onDateSelected = { [weak self] date in
-            self?.viewModel.selectDate(date)
             self?.updateUI()
         }
 
@@ -61,44 +60,47 @@ final class PetRoutineViewController: UIViewController {
         }
     }
 
-    // MARK: - Initial State
-    // MARK: - Initial State
     private func setupInitialState() {
-        if let typeString = preselectedPetType ?? fetchLatestPetType(),
-           let petType = PetType(rawValue: typeString) {
-            petTypeSelector.setInitialType(from: petType)
+        if let typeString = preselectedPetType,
+           let petType = PetType(displayName: typeString) {
 
-            petTypeSelector.isUserInteractionEnabled = false
+            print("✅ eşleşti:", petType.rawValue)
             viewModel.selectPetType(petType)
+            petTypeSelector.setInitialType(from: petType)
+            petTypeSelector.isUserInteractionEnabled = false
+            petTypeTitleLabel.text = "\(petType.displayName) Rutinleri"
+        } else if let fallbackType = fetchLatestPetTypeAsEnum() {
+            print("ℹ️ fallback:", fallbackType.rawValue)
+            viewModel.selectPetType(fallbackType)
+            petTypeSelector.setInitialType(from: fallbackType)
+            petTypeTitleLabel.text = "\(fallbackType.displayName) Rutinleri"
         } else {
+            print("❌ varsayılan: cat")
+            viewModel.selectPetType(.cat)
             petTypeSelector.setInitialType(from: .cat)
-
-
-            viewModel.selectPetType(PetType.cat)
+            petTypeTitleLabel.text = "Kedi Rutinleri"
         }
     }
 
-    // MARK: - Fetch from SwiftData
-    private func fetchLatestPetType() -> String? {
+    private func fetchLatestPetTypeAsEnum() -> PetType? {
         do {
             let descriptor = FetchDescriptor<Pet>(
                 sortBy: [SortDescriptor(\Pet.birthDate, order: .reverse)]
             )
             let pets: [Pet] = try modelContext?.fetch(descriptor) ?? []
-            return pets.first?.type
+            return pets.first.flatMap { PetType(rawValue: $0.type) }
         } catch {
-            print("Fetch error: \(error)")
+            print("❌ Fetch error: \(error)")
             return nil
         }
     }
 
-    // MARK: - Update Routine List
     private func updateUI() {
-        let routines = viewModel.getPredefinedRoutines().map { ($0.title, $0.frequency) }
+        let routines = viewModel.getPredefinedRoutines(for: viewModel.selectedPetType).map { ($0.title, $0.frequency) }
+
         routineListView.update(with: routines)
     }
 
-    // MARK: - Frequency Change Handler
     private func presentFrequencyOptions(for index: Int, title: String) {
         let alert = UIAlertController(title: "\(title) sıklığını değiştir", message: nil, preferredStyle: .actionSheet)
 

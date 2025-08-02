@@ -2,37 +2,50 @@ import UIKit
 import SwiftData
 
 final class MainTabBarController: UITabBarController {
-    var selectedType: String? // 💡 AddPet ekranından atanacak
-    var modelContext: ModelContext? // 💡 dışarıdan atanmalı
+    var selectedType: String? // AddPet ekranından atanır
+    var modelContext: ModelContext? // Dışarıdan atanmalı
+
+    // 📌 ÖZEL INIT — tür ve context dışarıdan alınır
+    init(selectedType: String?, modelContext: ModelContext?) {
+        self.selectedType = selectedType
+        self.modelContext = modelContext
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    // Gerekli init
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTabs() //aşağıdaik fonks kuruyoruz
+        
+        print("📦 MainTabBarController Yüklendi")
+        print("🧩 Tabbar kuruluyor — selectedType:", selectedType ?? "nil")
+        
+        setupTabs()
     }
 
     private func setupTabs() {
-        // Tab görünümü ayarları
-   
-
+        // Tab bar tasarımı
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
         
-        // Seçili item görünümü
         appearance.stackedLayoutAppearance.selected.iconColor = UIColor(named: "AccentColor") ?? .systemPurple
         appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor(named: "AccentColor") ?? .systemPurple]
-
-        // Seçili olmayan item görünümü
+        
         appearance.stackedLayoutAppearance.normal.iconColor = .lightGray
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.lightGray]
 
-        // Uygula
         tabBar.standardAppearance = appearance
         if #available(iOS 15.0, *) {
             tabBar.scrollEdgeAppearance = appearance
         }
+
+        // 📌 Rutinler sekmesi
         let routineVC = PetRoutineViewController()
-        routineVC.preselectedPetType = selectedType
+        routineVC.preselectedPetType = selectedType // 💡 Artık doğru geliyor
         routineVC.modelContext = modelContext
         routineVC.tabBarItem = UITabBarItem(title: "Rutinler", image: UIImage(systemName: "pawprint.fill"), tag: 0)
 
@@ -49,5 +62,5 @@ final class MainTabBarController: UITabBarController {
             UINavigationController(rootViewController: vetVC),
             UINavigationController(rootViewController: profileVC)
         ]
-      }
     }
+}

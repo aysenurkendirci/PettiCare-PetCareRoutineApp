@@ -1,31 +1,31 @@
-import Foundation
-
 final class RoutineViewModel {
-
-    // MARK: - Properties
+    
+    // Seçilen pet türü (tek seferlik geliyor)
     private(set) var selectedPetType: PetType = .cat
-    private(set) var selectedDate: Date = Date()
-    private var allRoutines: [DailyRoutine] = []
 
-    // MARK: - Selection Actions
+    // O türe ait hazır tanımlı rutinler
+    private var routines: [Routine] = []
+
+    // Dışarıdan pet türü ayarlama
     func selectPetType(_ type: PetType) {
         selectedPetType = type
+        routines = getPredefinedRoutines(for: type)
     }
 
-    func selectDate(_ date: Date) {
-        selectedDate = date
+    // Rutinleri dışarıdan alma
+    func getRoutines() -> [Routine] {
+        return routines
     }
 
-    func addRoutine(_ routine: Routine) {
-        if let index = allRoutines.firstIndex(where: { $0.date == selectedDate && $0.petType == selectedPetType }) {
-            allRoutines[index].routines.append(routine)
-        } else {
-            let newRoutine = DailyRoutine(date: selectedDate, petType: selectedPetType, routines: [routine])
-            allRoutines.append(newRoutine)
-        }
+    // Frekans güncelleme (isteğe bağlı)
+    func updateFrequency(at index: Int, to newFrequency: String) {
+        guard index < routines.count else { return }
+        routines[index].frequency = newFrequency
     }
-    func getPredefinedRoutines() -> [Routine] {
-        switch selectedPetType {
+
+    // Hazır tanımlı rutinler
+    func getPredefinedRoutines(for type: PetType) -> [Routine] {
+        switch type {
         case .cat:
             return [
                 Routine(title: "Mama", iconName: "cat.fill", frequency: "Günde 2 kez"),
@@ -45,25 +45,9 @@ final class RoutineViewModel {
             ]
         case .fish:
             return [
-                Routine(title: "Genel kontrol", iconName: "staroflife.fill", frequency: "Ayda 1 kez")
+                Routine(title: "Yem Verme", iconName: "drop.fill", frequency: "Günde 1 kez"),
+                Routine(title: "Su Değişimi", iconName: "arrow.2.circlepath", frequency: "Haftada 1 kez")
             ]
         }
-    }
-    
-    
-    func updateFrequency(at index: Int, to newFrequency: String) {
-        var routines = getPredefinedRoutines()
-        guard index < routines.count else { return }
-        routines[index].frequency = newFrequency
-        // Bunu localde tutmadığın için, bu fonksiyon sadece örnek olarak yeniden render edilmesini sağlıyor.
-    }
-
-
-    // MARK: - Daily Summary
-    func getRoutinesForSelectedDate() -> [Routine] {
-        if let match = allRoutines.first(where: { $0.date == selectedDate && $0.petType == selectedPetType }) {
-            return match.routines
-        }
-        return []
     }
 }

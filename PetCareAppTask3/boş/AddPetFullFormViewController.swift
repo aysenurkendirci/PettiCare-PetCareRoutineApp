@@ -135,7 +135,7 @@ final class AddPetFullFormViewController: UIViewController { // final: Bu sını
         nameInput.onNameEntered = { [weak self] name in
             self?.viewModel.pet.name = name
         }
-        typePicker.onTypeSelected = { [weak self] type in
+        typePicker.onTypeSelected = { [weak self] type in //
             self?.viewModel.pet.type = type
             self?.breedPicker.updateBreedList(for: type)
         }
@@ -155,43 +155,33 @@ final class AddPetFullFormViewController: UIViewController { // final: Bu sını
     }
     
     @objc private func handleSave() {
-        let pet = viewModel.pet  // ViewModel içindeki geçici pet nesnesini al
+        let pet = viewModel.pet  // ViewModel'deki geçici pet nesnesini al
         
-        // Tüm alanların dolu olup olmadığını kontrol et (form doğrulama)
+        // Zorunlu alanları kontrol et
         guard
-            !pet.name.isEmpty,                             // İsim boş değilse
-            !pet.type.isEmpty,                             // Tür boş değilse
-            !pet.breed.isEmpty,                            // Cins boş değilse
-            !pet.color.isEmpty,                            // Renk boş değilse
-            pet.birthDate != Date.distantPast,             // Doğum tarihi girildiyse
-            !pet.weight.isEmpty,                           // Ağırlık boş değilse
-            !pet.height.isEmpty,                           // Boy boş değilse
-            let features = featuresInput.selectedFeatures  // Özellikler varsa (TextView'dan alınır)
+            !pet.name.isEmpty,
+            !pet.type.isEmpty,
+            !pet.breed.isEmpty,
+            !pet.color.isEmpty,
+            pet.birthDate != Date.distantPast,
+            !pet.weight.isEmpty,
+            !pet.height.isEmpty,
+            let features = featuresInput.selectedFeatures
         else {
-            // Eğer yukarıdaki kontrollerden biri bile sağlanmazsa uyarı ver
             showAlert(title: "Eksik Bilgi", message: "Lütfen tüm alanları doldurun.")
-            return  // Kayıt işlemi durdurulur
+            return
         }
-        
-        // Test amaçlı: Kayıtlı evcil hayvanları terminale yazdır
-        do {
-            let descriptor = FetchDescriptor<Pet>()              // Tüm Pet verilerini çekmek için descriptor oluştur
-            let pets = try modelContext?.fetch(descriptor)       // SwiftData'dan verileri çek
-            print("📦 Kayıtlı Pet'ler:")
-            pets?.forEach { pet in
-                print("🐾 \(pet.name) | Tür: \(pet.type) | Doğum: \(pet.birthDate)")
-            }
-        } catch {
-            print("❌ Fetch hatası: \(error)") // Veri çekme sırasında hata olursa
-        }
-        
-        // ViewModel içindeki detay alanını da doldur
+
+        // Seçilen türü terminale yazdır
+        print("🐶 Kayıt edilen tür (formdan alınan):", pet.type)
+
+        // ViewModel detay güncellemesi
         viewModel.pet.details = features
-        
-        // ViewModel aracılığıyla veriyi kaydet (SwiftData içine yaz)
+
+        // SwiftData'ya kaydet
         viewModel.savePet(
             name: pet.name,
-            type: pet.type,
+            type: PetType(displayName: pet.type) ?? .cat,
             breed: pet.breed,
             birthDate: pet.birthDate,
             weight: pet.weight,
@@ -199,28 +189,31 @@ final class AddPetFullFormViewController: UIViewController { // final: Bu sını
             color: pet.color,
             details: pet.details
         )
-        
-        // Başarılı kayıt sonrası kullanıcıya bilgi ver, ardından yeni ekrana geç
+
+        let tabBarController = MainTabBarController(selectedType: pet.type, modelContext: modelContext)
+
+            print("📤 selectedType atanıyor:", pet.type)
+        // Debug log: tür doğru atandı mı?
+        print("📤 selectedType atanıyor:", tabBarController.selectedType ?? "nil")
+
+        // ✅ Alert içinde tekrar oluşturma, sadece göster!
             showAlert(title: "Başarılı", message: "Evcil hayvan başarıyla kaydedildi!") {
-                let tabBarController = MainTabBarController()
-                tabBarController.modelContext = self.modelContext // 💡 context'i aktar
-                tabBarController.selectedType = pet.type 
                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                    let window = windowScene.windows.first {
                     window.rootViewController = tabBarController
                     window.makeKeyAndVisible()
                 }
-
             }
-    func showAlert(title: String, message: String, completion: (() -> Void)? = nil) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert) // Uyarı kutusu oluştur
-        alert.addAction(UIAlertAction(title: "Tamam", style: .default) { _ in
-            completion?()  // Eğer tamamlandıysa (kapanınca yapılacak işlem varsa) onu çalıştır
-        })
-        present(alert, animated: true) // Uyarıyı göster
-    }
-
- }
+    
+            func showAlert(title: String, message: String, completion: (() -> Void)? = nil) {
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Tamam", style: .default) { _ in
+                    completion?()
+                })
+                self.present(alert, animated: true)
+            }
+        }
 }
+
 
     
